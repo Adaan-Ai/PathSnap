@@ -1,0 +1,27 @@
+{
+  "feature_count": 13,
+  "feature_order": [
+    "perpendicular_distance_m",
+    "projection_fraction",
+    "log_segment_length_m",
+    "road_bearing_sin",
+    "road_bearing_cos",
+    "movement_bearing_sin",
+    "movement_bearing_cos",
+    "direction_difference_scaled",
+    "log_gps_step_distance_m",
+    "log_delta_t_s",
+    "log_gps_speed_mps",
+    "log_from_node_degree",
+    "log_to_node_degree"
+  ],
+  "candidate_settings": {
+    "radius_m": 50.0,
+    "max_candidates": 8
+  },
+  "training_partition": "train",
+  "training_trip_count": 80,
+  "training_candidate_count": 48265,
+  "target_semantics": "monotonic route-sequence alignment weak labels",
+  "random_seed": 2026
+}
