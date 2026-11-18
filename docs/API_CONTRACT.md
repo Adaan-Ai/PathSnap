@@ -1,5 +1,5 @@
 
-# PathSnap API Contract
+# PathSnap API Contract 
 
 ## 1. Health Check
 
