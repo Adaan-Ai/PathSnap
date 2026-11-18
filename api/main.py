@@ -1,7 +1,9 @@
 import logging
 import time
+from pathlib import Path
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 
 from src.data_loader import list_trips
@@ -31,7 +33,10 @@ app.add_middleware(
 )
 
 @app.get("/")
-def root():
+def serve_ui():
+    index_path = Path(__file__).resolve().parent.parent / "ui" / "index.html"
+    if index_path.exists():
+        return FileResponse(index_path)
     return {
         "status": "online",
         "service": "PathSnap Distributed Inference Server",

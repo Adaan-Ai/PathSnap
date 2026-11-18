@@ -1,4 +1,5 @@
 @echo off
-echo Starting PathSnap Streamlit UI on Laptop 2 (port 8501)...
-streamlit run ui/app.py
+echo Starting PathSnap Evaluator Web Interface on http://localhost:8000/ ...
+start http://localhost:8000/
+python -m uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
 pause
