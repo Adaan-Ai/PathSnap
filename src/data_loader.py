@@ -93,6 +93,7 @@ def load_trip_data(trip_id, partition=None):
         route_arcs = df_route["arc_id"].tolist()
         
     return {
+        #this is the new return format from the json. 
         "trip_id": trip_id,
         "partition": partition,
         "track": df_track,
