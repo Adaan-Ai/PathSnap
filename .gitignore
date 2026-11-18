@@ -1,0 +1,37 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Large Datasets & Archives (Per Hackathon guidelines)
+Student folder/
+Student folder.zip
+PathSnap_student_materials.zip
+PathSnap_student_materials/
+*.track
+*.nodes
+*.arcs
+*.route
+*.zip
+*.tar.gz
+
+# Environments & Virtual Envs
+.env
+.venv
+env/
+venv/
+ENV/
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Streamlit & Cache
+.streamlit/
+.pytest_cache/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
