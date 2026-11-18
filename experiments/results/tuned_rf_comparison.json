@@ -1,0 +1,352 @@
+{
+  "target_semantics": "weak route-sequence alignment; not independent per-observation ground truth",
+  "candidate_settings": {
+    "radius_m": 50,
+    "max_candidates": 8
+  },
+  "training_observations_per_trip_max": 100,
+  "cv": {
+    "default": {
+      "parameters": {
+        "n_estimators": 120,
+        "max_depth": 14,
+        "min_samples_leaf": 2
+      },
+      "folds": [
+        {
+          "fold": 1,
+          "candidate_macro_f1": 0.8818119220932521,
+          "top1_all_aligned": 0.77,
+          "log_loss": 0.18048007527893514,
+          "mean_fit_seconds": 1.4759421999915503,
+          "inference_seconds": 0.039407699994626455,
+          "aligned_observations": 800,
+          "covered_observations": 748
+        },
+        {
+          "fold": 2,
+          "candidate_macro_f1": 0.8700104224566448,
+          "top1_all_aligned": 0.8175,
+          "log_loss": 0.19349626134895925,
+          "mean_fit_seconds": 1.2500860999862198,
+          "inference_seconds": 0.05052390000491869,
+          "aligned_observations": 800,
+          "covered_observations": 782
+        },
+        {
+          "fold": 3,
+          "candidate_macro_f1": 0.8577592196172885,
+          "top1_all_aligned": 0.76625,
+          "log_loss": 0.2017306349210301,
+          "mean_fit_seconds": 1.588203599996632,
+          "inference_seconds": 0.0546219999960158,
+          "aligned_observations": 800,
+          "covered_observations": 788
+        },
+        {
+          "fold": 4,
+          "candidate_macro_f1": 0.8464410466101278,
+          "top1_all_aligned": 0.71125,
+          "log_loss": 0.21519983256177402,
+          "mean_fit_seconds": 1.351400100000319,
+          "inference_seconds": 0.04002139999647625,
+          "aligned_observations": 800,
+          "covered_observations": 757
+        },
+        {
+          "fold": 5,
+          "candidate_macro_f1": 0.8670195289468591,
+          "top1_all_aligned": 0.8025,
+          "log_loss": 0.19358629574335415,
+          "mean_fit_seconds": 1.2833367000130238,
+          "inference_seconds": 0.05516479999641888,
+          "aligned_observations": 800,
+          "covered_observations": 795
+        }
+      ],
+      "candidate_macro_f1_mean": 0.8646084279448344,
+      "candidate_macro_f1_sd": 0.013303388317802796,
+      "top1_all_aligned_mean": 0.7735,
+      "top1_all_aligned_sd": 0.04097827168146551,
+      "log_loss_mean": 0.19689861997081054,
+      "mean_inference_seconds_per_fold": 0.04794795999769121
+    },
+    "bayesian_selected": {
+      "parameters": {
+        "n_estimators": 82,
+        "max_depth": 21,
+        "min_samples_leaf": 1,
+        "max_features": 0.573
+      },
+      "folds": [
+        {
+          "fold": 1,
+          "candidate_macro_f1": 0.8772981479292159,
+          "top1_all_aligned": 0.77375,
+          "log_loss": 0.1654065710247925,
+          "mean_fit_seconds": 1.8180036999983713,
+          "inference_seconds": 0.03984670000500046,
+          "aligned_observations": 800,
+          "covered_observations": 748
+        },
+        {
+          "fold": 2,
+          "candidate_macro_f1": 0.8641447183839888,
+          "top1_all_aligned": 0.82,
+          "log_loss": 0.2667573956967733,
+          "mean_fit_seconds": 1.8518653999926755,
+          "inference_seconds": 0.0402196999930311,
+          "aligned_observations": 800,
+          "covered_observations": 782
+        },
+        {
+          "fold": 3,
+          "candidate_macro_f1": 0.8512507888448957,
+          "top1_all_aligned": 0.77375,
+          "log_loss": 0.2419771141562895,
+          "mean_fit_seconds": 1.8058049000101164,
+          "inference_seconds": 0.042034500002046116,
+          "aligned_observations": 800,
+          "covered_observations": 788
+        },
+        {
+          "fold": 4,
+          "candidate_macro_f1": 0.8367724809226338,
+          "top1_all_aligned": 0.705,
+          "log_loss": 0.2871900379264595,
+          "mean_fit_seconds": 1.768017399997916,
+          "inference_seconds": 0.039962400012882426,
+          "aligned_observations": 800,
+          "covered_observations": 757
+        },
+        {
+          "fold": 5,
+          "candidate_macro_f1": 0.8659221827717785,
+          "top1_all_aligned": 0.81,
+          "log_loss": 0.23788063508660412,
+          "mean_fit_seconds": 1.7767282999993768,
+          "inference_seconds": 0.04045520001091063,
+          "aligned_observations": 800,
+          "covered_observations": 795
+        }
+      ],
+      "candidate_macro_f1_mean": 0.8590776637705024,
+      "candidate_macro_f1_sd": 0.015518454165692174,
+      "top1_all_aligned_mean": 0.7765000000000001,
+      "top1_all_aligned_sd": 0.045116169496090874,
+      "log_loss_mean": 0.23984235077818378,
+      "mean_inference_seconds_per_fold": 0.04050370000477414
+    }
+  },
+  "student_development": {
+    "default": {
+      "parameters": {
+        "n_estimators": 120,
+        "max_depth": 14,
+        "min_samples_leaf": 2
+      },
+      "trip_count": 10,
+      "top1_all_aligned_weighted": 0.8118475991649269,
+      "candidate_macro_f1_mean_per_trip": 0.8743634703791601,
+      "log_loss_mean_per_trip": 0.186107332284402,
+      "inference_seconds_total": 1.0968076999706682,
+      "trips": [
+        {
+          "trip_id": "00000000",
+          "aligned_observations": 2503,
+          "candidate_misses": 5,
+          "top1_all_aligned": 0.9324810227726728,
+          "candidate_macro_f1": 0.9345692232411604,
+          "log_loss": 0.1400867815055109,
+          "inference_seconds": 0.10241039999527857
+        },
+        {
+          "trip_id": "00000007",
+          "aligned_observations": 1354,
+          "candidate_misses": 0,
+          "top1_all_aligned": 0.9062038404726735,
+          "candidate_macro_f1": 0.9167132653540717,
+          "log_loss": 0.18610278922230192,
+          "inference_seconds": 0.09799090000160504
+        },
+        {
+          "trip_id": "00000009",
+          "aligned_observations": 1049,
+          "candidate_misses": 24,
+          "top1_all_aligned": 0.771210676835081,
+          "candidate_macro_f1": 0.8448927080455908,
+          "log_loss": 0.20241107759884303,
+          "inference_seconds": 0.11399369999708142
+        },
+        {
+          "trip_id": "00000040",
+          "aligned_observations": 2995,
+          "candidate_misses": 0,
+          "top1_all_aligned": 0.8941569282136895,
+          "candidate_macro_f1": 0.9125531530186906,
+          "log_loss": 0.17726426042656776,
+          "inference_seconds": 0.11543529998743907
+        },
+        {
+          "trip_id": "00000052",
+          "aligned_observations": 262,
+          "candidate_misses": 0,
+          "top1_all_aligned": 0.9198473282442748,
+          "candidate_macro_f1": 0.9309941858783373,
+          "log_loss": 0.11095137632828897,
+          "inference_seconds": 0.08492589999514166
+        },
+        {
+          "trip_id": "00000056",
+          "aligned_observations": 3958,
+          "candidate_misses": 32,
+          "top1_all_aligned": 0.8314805457301667,
+          "candidate_macro_f1": 0.8773450046932394,
+          "log_loss": 0.18851041234552696,
+          "inference_seconds": 0.15665819999412633
+        },
+        {
+          "trip_id": "00000065",
+          "aligned_observations": 768,
+          "candidate_misses": 1,
+          "top1_all_aligned": 0.76953125,
+          "candidate_macro_f1": 0.8443774305388534,
+          "log_loss": 0.2075935208356121,
+          "inference_seconds": 0.09145799999532755
+        },
+        {
+          "trip_id": "00000076",
+          "aligned_observations": 1486,
+          "candidate_misses": 19,
+          "top1_all_aligned": 0.797442799461642,
+          "candidate_macro_f1": 0.8543753486974808,
+          "log_loss": 0.18089334189341702,
+          "inference_seconds": 0.10198969999328256
+        },
+        {
+          "trip_id": "00000077",
+          "aligned_observations": 3911,
+          "candidate_misses": 9,
+          "top1_all_aligned": 0.6397340833546408,
+          "candidate_macro_f1": 0.775107105094593,
+          "log_loss": 0.2729629402083114,
+          "inference_seconds": 0.12659240000357386
+        },
+        {
+          "trip_id": "00000091",
+          "aligned_observations": 874,
+          "candidate_misses": 1,
+          "top1_all_aligned": 0.7974828375286042,
+          "candidate_macro_f1": 0.8527072792295838,
+          "log_loss": 0.19429682247964,
+          "inference_seconds": 0.10535320000781212
+        }
+      ]
+    },
+    "bayesian_selected": {
+      "parameters": {
+        "n_estimators": 82,
+        "max_depth": 21,
+        "min_samples_leaf": 1,
+        "max_features": 0.573
+      },
+      "trip_count": 10,
+      "top1_all_aligned_weighted": 0.8060542797494781,
+      "candidate_macro_f1_mean_per_trip": 0.8736292722787056,
+      "log_loss_mean_per_trip": 0.22775964801332269,
+      "inference_seconds_total": 0.7981357999669854,
+      "trips": [
+        {
+          "trip_id": "00000000",
+          "aligned_observations": 2503,
+          "candidate_misses": 5,
+          "top1_all_aligned": 0.9324810227726728,
+          "candidate_macro_f1": 0.9368760422119287,
+          "log_loss": 0.1486559145269751,
+          "inference_seconds": 0.07911249999597203
+        },
+        {
+          "trip_id": "00000007",
+          "aligned_observations": 1354,
+          "candidate_misses": 0,
+          "top1_all_aligned": 0.9039881831610044,
+          "candidate_macro_f1": 0.9207390818004513,
+          "log_loss": 0.29417665276051636,
+          "inference_seconds": 0.05783249999512918
+        },
+        {
+          "trip_id": "00000009",
+          "aligned_observations": 1049,
+          "candidate_misses": 24,
+          "top1_all_aligned": 0.7645376549094376,
+          "candidate_macro_f1": 0.8483016394964857,
+          "log_loss": 0.2883569493240643,
+          "inference_seconds": 0.07425530000182334
+        },
+        {
+          "trip_id": "00000040",
+          "aligned_observations": 2995,
+          "candidate_misses": 0,
+          "top1_all_aligned": 0.8931552587646077,
+          "candidate_macro_f1": 0.9152353502688682,
+          "log_loss": 0.2224627798048754,
+          "inference_seconds": 0.08253559999866411
+        },
+        {
+          "trip_id": "00000052",
+          "aligned_observations": 262,
+          "candidate_misses": 0,
+          "top1_all_aligned": 0.9122137404580153,
+          "candidate_macro_f1": 0.9335771270006441,
+          "log_loss": 0.13138226475664452,
+          "inference_seconds": 0.05635529999563005
+        },
+        {
+          "trip_id": "00000056",
+          "aligned_observations": 3958,
+          "candidate_misses": 32,
+          "top1_all_aligned": 0.8213744315310763,
+          "candidate_macro_f1": 0.8744719516541114,
+          "log_loss": 0.21862292142272172,
+          "inference_seconds": 0.11227789999975357
+        },
+        {
+          "trip_id": "00000065",
+          "aligned_observations": 768,
+          "candidate_misses": 1,
+          "top1_all_aligned": 0.78125,
+          "candidate_macro_f1": 0.8452864091372984,
+          "log_loss": 0.24279418297304498,
+          "inference_seconds": 0.07098779999068938
+        },
+        {
+          "trip_id": "00000076",
+          "aligned_observations": 1486,
+          "candidate_misses": 19,
+          "top1_all_aligned": 0.7833109017496636,
+          "candidate_macro_f1": 0.8393423505774785,
+          "log_loss": 0.19585882671201849,
+          "inference_seconds": 0.07116710000263993
+        },
+        {
+          "trip_id": "00000077",
+          "aligned_observations": 3911,
+          "candidate_misses": 9,
+          "top1_all_aligned": 0.6295065200715929,
+          "candidate_macro_f1": 0.7635818198111584,
+          "log_loss": 0.3413664898468457,
+          "inference_seconds": 0.11935579999408219
+        },
+        {
+          "trip_id": "00000091",
+          "aligned_observations": 874,
+          "candidate_misses": 1,
+          "top1_all_aligned": 0.7929061784897025,
+          "candidate_macro_f1": 0.8588809508286307,
+          "log_loss": 0.1939194980055205,
+          "inference_seconds": 0.07425599999260157
+        }
+      ]
+    }
+  }
+}

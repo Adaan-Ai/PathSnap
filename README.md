@@ -23,6 +23,7 @@ python src/pathsnap/eda_visualizations.py `
   --dataset "C:\path\to\train" `
   --inventory reports/eda/training_trip_inventory.csv `
   --output reports/eda/visualizations
+python experiments/generate_development_map.py
 python experiments/candidate_diagnostics.py `
   --dataset "C:\path\to\train" `
   --output experiments/results/candidate_diagnostics.json
@@ -36,6 +37,10 @@ python experiments/evaluate_student_test.py `
   --train "C:\path\to\train" `
   --student-test "C:\path\to\student_test" `
   --output experiments/results
+python experiments/compare_tuned_rf.py `
+  --train "C:\path\to\train" `
+  --student-test "C:\path\to\student_test" `
+  --output experiments/results/tuned_rf_comparison.json
 python experiments/evaluate_decoder.py `
   --train "C:\path\to\train" `
   --student-test "C:\path\to\student_test"
@@ -52,6 +57,8 @@ To start the API/UI on the data-host laptop, run `.\scripts\start_server.ps1 -Da
 The EDA output is derived from the supplied training partition. It includes a JSON aggregate summary and per-trip CSV inventory. Visualizations include training-set size distributions and a Folium map of one real training trip's GPS observations and road network. The model-comparison runner uses GroupKFold by trip and records five candidate scorers' results; observation-level targets are weak labels aligned monotonically from route sequences. The development evaluator loads student-test routes only in its separate scoring path. The initial 10-trip student-test comparison is in `reports/model_comparison.md`; Random Forest and Histogram Gradient Boosting are close, and these weak-label results are provisional.
 
 Per-trip inventories and generated maps stay local: they include precise GPS locations from the provided dataset and are ignored by Git. The map-generation code is included so the team can recreate them from its local data.
+
+`experiments/generate_development_map.py` creates a four-layer Folium map for permitted student-development trip `00000000`, with the road network, raw GPS observations, route-derived weak reference and Random Forest plus Viterbi output. It also writes a static figure for the report. The `.route` file is read only to construct the development visualization; the prediction call itself excludes route labels. Generated geographic files stay local and should not be committed.
 
 ## Planned phases
 

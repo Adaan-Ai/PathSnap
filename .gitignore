@@ -7,6 +7,10 @@ __pycache__/
 reports/eda/training_trip_inventory.csv
 reports/eda/training_eda_summary.json
 reports/eda/visualizations/
+# Report exports and their embedded GPS/map/screenshot evidence stay local.
+reports/figures/
+reports/PathSnap_Technical_Report.md
+reports/PathSnap_Technical_Report.pdf
 
 # C extensions
 *.so
