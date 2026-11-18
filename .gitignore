@@ -3,6 +3,11 @@ __pycache__/
 *.py[codz]
 *$py.class
 
+# Local derived geospatial outputs may contain precise trajectory locations.
+reports/eda/training_trip_inventory.csv
+reports/eda/training_eda_summary.json
+reports/eda/visualizations/
+
 # C extensions
 *.so
 
