@@ -2,21 +2,144 @@
 __pycache__/
 *.py[cod]
 *.pyo
+*.so
 
 # Virtual environments
 .venv/
 venv/
+env/
 
 # Environment variables and secrets
 .env
 .env.*
 !.env.example
+.envrc
 
-# Testing and tooling
+# Local derived geospatial outputs may contain precise trajectory locations.
+reports/eda/training_trip_inventory.csv
+reports/eda/training_eda_summary.json
+reports/eda/visualizations/
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py.cover
+*.lcov
+.hypothesis/
 .pytest_cache/
+cover/
 .mypy_cache/
 .ruff_cache/
-.coverage
+
+# Translations
+*.mo
+*.pot
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask
+instance/
+.webassets-cache
+
+# Scrapy
+.scrapy
+
+# Sphinx
+docs/_build/
+
+# PyBuilder
+.pybuilder/
+target/
+
+# Jupyter
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+# .python-version
+
+# pipenv
+# Pipfile.lock
+
+# uv
+# uv.lock
+
+# poetry
+# poetry.lock
+# poetry.toml
+
+# pdm
+.pdm-python
+.pdm-build/
+
+# pixi
+.pixi/*
+!.pixi/config.toml
+
+# PEP 582
+__pypackages__/
+
+# Celery
+celerybeat-schedule*
+celerybeat.pid
+
+# Redis
+*.rdb
+*.aof
+*.pid
+
+# RabbitMQ
+mnesia/
+rabbitmq/
+rabbitmq-data/
+
+# ActiveMQ
+activemq-data/
+
+# SageMath
+*.sage.py
 
 # OS/editor
 .DS_Store
