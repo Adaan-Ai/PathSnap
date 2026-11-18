@@ -29,6 +29,9 @@ python experiments/candidate_diagnostics.py `
 python experiments/train_compare.py `
   --dataset "C:\path\to\train" `
   --output experiments/results
+python experiments/bayesian_tune.py `
+  --dataset "C:\path\to\train" `
+  --output experiments/results
 python experiments/evaluate_student_test.py `
   --train "C:\path\to\train" `
   --student-test "C:\path\to\student_test" `
@@ -50,4 +53,4 @@ Per-trip inventories and generated maps stay local: they include precise GPS loc
 7. Build the API and evaluator UI with a server-side prediction boundary.
 8. Verify two-laptop deployment and prepare a reproducible technical report.
 
-The evaluator-testing partition is reserved for the final invigilated evaluation. No evaluator data or labels are needed to run the training EDA command.
+The Bayesian search optimizes Random Forest settings using only trip-grouped folds from `train`; its full trial record is retained. The evaluator-testing partition is reserved for the final invigilated evaluation. No evaluator data or labels are needed to run these commands.
