@@ -5,8 +5,13 @@ import tempfile
 import unittest
 from pathlib import Path
 
+import numpy as np
+
 from pathsnap.candidates import CandidateGenerator, candidate_features
 from pathsnap.data import load_trip
+from pathsnap.data import RoadArc, TrackObservation, TripData
+from pathsnap.candidates import ObservationCandidates, RoadCandidate
+from pathsnap.decoder import viterbi_decode
 from pathsnap.eda import haversine_m, read_rows, run
 from pathsnap.alignment import align_route_to_track
 
@@ -89,6 +94,25 @@ class EdaTests(unittest.TestCase):
         self.assertEqual(alignment.aligned_observations, 3)
         self.assertEqual(alignment.unmatched_observations, (3,))
         self.assertEqual(positions, sorted(positions))
+
+    def test_viterbi_follows_connected_arcs_and_preserves_empty_observations(self) -> None:
+        trip = TripData(
+            "decode",
+            (TrackObservation(8.0, 49.0, 0), TrackObservation(8.0001, 49.0, 1),
+             TrackObservation(8.0002, 49.0, 2)),
+            ((8.0, 49.0), (8.0001, 49.0), (8.0002, 49.0)),
+            (RoadArc(0, 0, 1), RoadArc(1, 1, 2)), None,
+        )
+        candidate = lambda arc_id: RoadCandidate(arc_id, 1, 0.9, 7.3, 90, 90, 0)
+        generated = [
+            ObservationCandidates(0, 0, (candidate(0),), "ok"),
+            ObservationCandidates(1, 1, (candidate(1),), "ok"),
+            ObservationCandidates(2, 2, (), "no_candidate_within_radius"),
+        ]
+        result = viterbi_decode(trip, generated, [np.array([0.9]), np.array([0.8]), np.array([])])
+        self.assertEqual(result.arc_ids, (0, 1, None))
+        self.assertEqual(result.connected_transition_rate, 1.0)
+        self.assertEqual(result.transition_count, 1)
 
 
 if __name__ == "__main__":
