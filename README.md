@@ -14,6 +14,7 @@ The dataset guide confirms that `.route` contains an ordered sequence of trip-lo
 python -m venv .venv
 .venv\Scripts\Activate.ps1
 python -m pip install -r requirements.txt
+$env:PYTHONPATH = "src"
 python src/pathsnap/eda.py `
   --dataset "C:\path\to\train" `
   --output reports/eda
@@ -22,19 +23,29 @@ python src/pathsnap/eda_visualizations.py `
   --dataset "C:\path\to\train" `
   --inventory reports/eda/training_trip_inventory.csv `
   --output reports/eda/visualizations
+python experiments/candidate_diagnostics.py `
+  --dataset "C:\path\to\train" `
+  --output experiments/results/candidate_diagnostics.json
+python experiments/train_compare.py `
+  --dataset "C:\path\to\train" `
+  --output experiments/results
+python experiments/evaluate_student_test.py `
+  --train "C:\path\to\train" `
+  --student-test "C:\path\to\student_test" `
+  --output experiments/results
 ```
 
-The EDA output is derived from the supplied training partition. It includes a JSON aggregate summary and per-trip CSV inventory. Visualizations include training-set size distributions and a Folium map of one real training trip's GPS observations and road network.
+The EDA output is derived from the supplied training partition. It includes a JSON aggregate summary and per-trip CSV inventory. Visualizations include training-set size distributions and a Folium map of one real training trip's GPS observations and road network. The model-comparison runner uses GroupKFold by trip and records five candidate scorers' results; observation-level targets are weak labels aligned monotonically from route sequences. The development evaluator loads student-test routes only in its separate scoring path. The initial 10-trip student-test comparison is in `reports/model_comparison.md`; Random Forest and Histogram Gradient Boosting are close, and these weak-label results are provisional.
 
 Per-trip inventories and generated maps stay local: they include precise GPS locations from the provided dataset and are ignored by Git. The map-generation code is included so the team can recreate them from its local data.
 
 ## Planned phases
 
 1. Dataset exploration and validation.
-2. Establish label semantics and trip-level splits; implement preprocessing and candidate generation (in progress; observation-level label alignment remains open).
-3. Build and inspect leakage-safe features.
-4. Compare five distinct models using trip-grouped cross-validation; keep optimization trials and measurements.
-5. Tune the selected model on training trips and compare on permitted student-development trips if supplied.
+2. Establish label semantics and trip-level splits; implement preprocessing and candidate generation (in progress; candidate misses require follow-up).
+3. Align training route sequences to GPS with a monotonic weak-label method and inspect its limitations.
+4. Compare five distinct models using trip-grouped cross-validation; keep optimization trials and measurements (CV complete; see `reports/model_comparison.md`).
+5. Tune and compare models on the supplied student-development trips; keep the invigilator partition reserved for final evaluation.
 6. Implement and measure HMM/Viterbi decoding against classifier-only predictions.
 7. Build the API and evaluator UI with a server-side prediction boundary.
 8. Verify two-laptop deployment and prepare a reproducible technical report.

@@ -52,10 +52,15 @@ class CandidateGenerator:
         self.max_candidates = max_candidates
         self.cell_size_m = cell_size_m
 
-    def generate(self, trip: TripData) -> list[ObservationCandidates]:
+    def generate(self, trip: TripData, observation_indices: list[int] | tuple[int, ...] | None = None) -> list[ObservationCandidates]:
+        selected_indices = list(range(len(trip.observations))) if observation_indices is None else list(observation_indices)
+        if len(set(selected_indices)) != len(selected_indices):
+            raise ValueError("observation_indices must not contain duplicates")
+        if any(index < 0 or index >= len(trip.observations) for index in selected_indices):
+            raise IndexError("observation index out of range")
         if not trip.observations or not trip.nodes or not trip.arcs:
-            return [ObservationCandidates(i, observation.timestamp_s, (), "empty_network_or_track")
-                    for i, observation in enumerate(trip.observations)]
+            return [ObservationCandidates(i, trip.observations[i].timestamp_s, (), "empty_network_or_track")
+                    for i in selected_indices]
 
         center_lon = sum(node[0] for node in trip.nodes) / len(trip.nodes)
         center_lat = sum(node[1] for node in trip.nodes) / len(trip.nodes)
@@ -81,7 +86,8 @@ class CandidateGenerator:
 
         reach = math.ceil(self.radius_m / self.cell_size_m) + 1
         results: list[ObservationCandidates] = []
-        for index, observation in enumerate(trip.observations):
+        for index in selected_indices:
+            observation = trip.observations[index]
             x, y = ((observation.longitude - center_lon) * x_scale,
                     (observation.latitude - center_lat) * y_scale)
             cell_x, cell_y = math.floor(x / self.cell_size_m), math.floor(y / self.cell_size_m)

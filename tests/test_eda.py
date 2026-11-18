@@ -84,8 +84,7 @@ class EdaTests(unittest.TestCase):
             (trip_dir / "trip-c.arcs").write_text("0 1\n1 2\n", encoding="utf-8")
             (trip_dir / "trip-c.route").write_text("0\n1\n", encoding="utf-8")
             trip = load_trip(trip_dir, include_route_labels=True)
-        candidates = CandidateGenerator(radius_m=20).generate(trip)
-        alignment = align_route_to_track(trip, candidates)
+        alignment = align_route_to_track(trip, max_alignment_distance_m=20)
         positions = [position for position in alignment.route_positions_by_observation if position is not None]
         self.assertEqual(alignment.aligned_observations, 3)
         self.assertEqual(alignment.unmatched_observations, (3,))
