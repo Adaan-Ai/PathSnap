@@ -42,6 +42,9 @@ python experiments/evaluate_decoder.py `
 python experiments/build_model.py `
   --dataset "C:\path\to\train" `
   --output models/pathsnap_rf.joblib
+python experiments/smoke_service.py `
+  --dataset "C:\path\to\student_test" `
+  --trip-id "00000000"
 ```
 
 To start the API and UI on the data-host laptop, set `PATHSNAP_DATA_ROOT` to the folder containing authorized trip directories and `PATHSNAP_MODEL` to the model artifact, then run `python -m pathsnap.service` with `PYTHONPATH=src`. The service listens on `0.0.0.0:8000`; from a second laptop on the same network, open `http://<data-host-ip>:8000/`. Keep the authorized data on the host. The service loads only `.track`, `.nodes`, and `.arcs`; it never reads or returns `.route` labels. For invigilated testing, set the data root only after the organiser supplies the permitted evaluator inputs.
