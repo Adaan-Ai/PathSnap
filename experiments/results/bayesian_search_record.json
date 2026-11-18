@@ -1,0 +1,213 @@
+{
+  "partition": "training_grouped_cross_validation_only",
+  "model": "random_forest",
+  "method": "GaussianProcessRegressor with Matern 5/2 kernel and expected improvement",
+  "initial_random_trials": 4,
+  "bayesian_trials": 6,
+  "folds": 5,
+  "seed": 2067,
+  "features": "fixed 50m radius/top8; up to 100 sampled training observations per trip",
+  "objective": "mean trip-grouped CV Top-1 accuracy over all weak-aligned observations; candidate misses score wrong",
+  "best_trial": {
+    "trial": 4,
+    "method": "seeded_random",
+    "n_estimators": 82,
+    "max_depth": 21,
+    "min_samples_leaf": 1,
+    "max_features": 0.573,
+    "top1_all_aligned_mean": 0.7765000000000001,
+    "top1_all_aligned_std": 0.045116169496090874,
+    "fold_scores": [
+      0.77375,
+      0.82,
+      0.77375,
+      0.705,
+      0.81
+    ],
+    "mean_fit_and_score_seconds_per_fold": 2.075149359999341
+  },
+  "elapsed_seconds": 206.36327050000546,
+  "trials": [
+    {
+      "trial": 1,
+      "method": "seeded_random",
+      "n_estimators": 180,
+      "max_depth": 20,
+      "min_samples_leaf": 4,
+      "max_features": 0.759,
+      "top1_all_aligned_mean": 0.77125,
+      "top1_all_aligned_std": 0.03930052480565623,
+      "fold_scores": [
+        0.7675,
+        0.81,
+        0.77125,
+        0.70875,
+        0.79875
+      ],
+      "mean_fit_and_score_seconds_per_fold": 9.384586779997335
+    },
+    {
+      "trial": 2,
+      "method": "seeded_random",
+      "n_estimators": 111,
+      "max_depth": 24,
+      "min_samples_leaf": 3,
+      "max_features": 0.757,
+      "top1_all_aligned_mean": 0.7692499999999999,
+      "top1_all_aligned_std": 0.045805294453807405,
+      "fold_scores": [
+        0.77,
+        0.8175,
+        0.7625,
+        0.6975,
+        0.79875
+      ],
+      "mean_fit_and_score_seconds_per_fold": 3.7995205600047486
+    },
+    {
+      "trial": 3,
+      "method": "seeded_random",
+      "n_estimators": 110,
+      "max_depth": 22,
+      "min_samples_leaf": 3,
+      "max_features": 0.929,
+      "top1_all_aligned_mean": 0.76925,
+      "top1_all_aligned_std": 0.03952451770736739,
+      "fold_scores": [
+        0.77,
+        0.8075,
+        0.765,
+        0.70625,
+        0.7975
+      ],
+      "mean_fit_and_score_seconds_per_fold": 7.267212820003624
+    },
+    {
+      "trial": 4,
+      "method": "seeded_random",
+      "n_estimators": 82,
+      "max_depth": 21,
+      "min_samples_leaf": 1,
+      "max_features": 0.573,
+      "top1_all_aligned_mean": 0.7765000000000001,
+      "top1_all_aligned_std": 0.045116169496090874,
+      "fold_scores": [
+        0.77375,
+        0.82,
+        0.77375,
+        0.705,
+        0.81
+      ],
+      "mean_fit_and_score_seconds_per_fold": 2.075149359999341
+    },
+    {
+      "trial": 5,
+      "method": "gaussian_process_ei",
+      "n_estimators": 123,
+      "max_depth": 20,
+      "min_samples_leaf": 1,
+      "max_features": 0.521,
+      "top1_all_aligned_mean": 0.77225,
+      "top1_all_aligned_std": 0.04254960340590732,
+      "fold_scores": [
+        0.77625,
+        0.81625,
+        0.75875,
+        0.7075,
+        0.8025
+      ],
+      "mean_fit_and_score_seconds_per_fold": 2.73324760000105
+    },
+    {
+      "trial": 6,
+      "method": "gaussian_process_ei",
+      "n_estimators": 83,
+      "max_depth": 16,
+      "min_samples_leaf": 1,
+      "max_features": 0.593,
+      "top1_all_aligned_mean": 0.7725000000000001,
+      "top1_all_aligned_std": 0.043865917863416475,
+      "fold_scores": [
+        0.77125,
+        0.82,
+        0.765,
+        0.705,
+        0.80125
+      ],
+      "mean_fit_and_score_seconds_per_fold": 1.9754340800049248
+    },
+    {
+      "trial": 7,
+      "method": "gaussian_process_ei",
+      "n_estimators": 86,
+      "max_depth": 23,
+      "min_samples_leaf": 2,
+      "max_features": 0.597,
+      "top1_all_aligned_mean": 0.7697499999999999,
+      "top1_all_aligned_std": 0.04230100471620029,
+      "fold_scores": [
+        0.76625,
+        0.81375,
+        0.76625,
+        0.70375,
+        0.79875
+      ],
+      "mean_fit_and_score_seconds_per_fold": 3.762007080001058
+    },
+    {
+      "trial": 8,
+      "method": "gaussian_process_ei",
+      "n_estimators": 105,
+      "max_depth": 20,
+      "min_samples_leaf": 1,
+      "max_features": 0.543,
+      "top1_all_aligned_mean": 0.7735000000000001,
+      "top1_all_aligned_std": 0.04634618376954032,
+      "fold_scores": [
+        0.77,
+        0.82125,
+        0.76,
+        0.705,
+        0.81125
+      ],
+      "mean_fit_and_score_seconds_per_fold": 5.054788680002093
+    },
+    {
+      "trial": 9,
+      "method": "gaussian_process_ei",
+      "n_estimators": 109,
+      "max_depth": 25,
+      "min_samples_leaf": 1,
+      "max_features": 0.529,
+      "top1_all_aligned_mean": 0.7697499999999999,
+      "top1_all_aligned_std": 0.042143727291258905,
+      "fold_scores": [
+        0.765,
+        0.80875,
+        0.76375,
+        0.705,
+        0.80625
+      ],
+      "mean_fit_and_score_seconds_per_fold": 2.9591751599975398
+    },
+    {
+      "trial": 10,
+      "method": "gaussian_process_ei",
+      "n_estimators": 103,
+      "max_depth": 18,
+      "min_samples_leaf": 2,
+      "max_features": 0.534,
+      "top1_all_aligned_mean": 0.771,
+      "top1_all_aligned_std": 0.04186473754844286,
+      "fold_scores": [
+        0.775,
+        0.81,
+        0.765,
+        0.70375,
+        0.80125
+      ],
+      "mean_fit_and_score_seconds_per_fold": 2.031924079998862
+    }
+  ],
+  "note": "Development and evaluator partitions were not read during hyperparameter search."
+}
